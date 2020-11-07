@@ -132,7 +132,7 @@ $ tensorboard --logdir=exp/TrainRRDBNetDIV2KIntraQP37 --port=7777
 
 **Note**:
 
-- For the original settings at YAML ang single-gpu training, ~20338 MiB GPU memory is needed. You can change `batch_size_per_gpu` and network settings at YAML.
+- For the original settings at YAML and single-gpu training, ~20338 MiB GPU memory is needed. You can change `batch_size_per_gpu` and network settings at YAML.
 - `dataset/num_worker_per_gpu` * [your assigned gpu number] should better be smaller than your cpu core number. For example, we have 40 cpu cores in total and use two gpus, then we should better let `dataset/num_worker_per_gpu` < [40/2=20], e.g., 16.
 
 We have prepared trained models at [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) (For Chinese researchers: [[百度网盘]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA), 提取码sgan).
@@ -165,7 +165,7 @@ Results are logged at `exp/TrainESRGANDIV2KIntraQP37/log.log`.
 
 **Note**:
 
-- For the original settings at YAML ang single-gpu training, ~21424 MiB GPU memory is needed. You can change `batch_size_per_gpu` and network settings at YAML.
+- For the original settings at YAML and single-gpu training, ~21424 MiB GPU memory is needed. You can change `batch_size_per_gpu` and network settings at YAML.
 - `dataset/num_worker_per_gpu` * [your assigned gpu number] should better be smaller than your cpu core number. For example, we have 40 cpu cores in total and use two gpus, then we should better let `dataset/num_worker_per_gpu` < [40/2=20], e.g., 16.
 
 We have prepared trained models at [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) (For Chinese researchers: [[百度网盘]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA), 提取码sgan).
