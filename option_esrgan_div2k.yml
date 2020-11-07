@@ -1,0 +1,106 @@
+dataset:
+  train:  # use LMDB
+    type: DIV2KTrainingSet
+    
+    # for defining dataset
+    gt_path: div2k_train_gt.lmdb
+    lq_path: div2k_train_lq_intra_qp37.lmdb
+    gt_size: 128  # ground truth patch size: gt_size * gt_size
+    use_flip: True
+    use_rot: True  # rotation per 90 degrees
+
+    # for defining datasampler
+    enlarge_ratio: 100  # enlarge dataset by randomly cropping.
+    
+    # for defining dataloader
+    num_worker_per_gpu: 32  # 32 in total. mainly affect IO speed
+    batch_size_per_gpu: 32  # 32 in total
+  
+  val:  # use disk IO
+    type: DIV2KTestSet
+    gt_path: DIV2K_valid_HR_crop/
+    lq_path: DIV2K_valid_HR_intra/qp37/
+
+network:
+  network_g:
+    load_path: exp/TrainRRDBNetDIV2KIntraQP37/ckp_400000.pt
+    num_in_ch: 3
+    num_feat: 32
+    num_block: 8  # 23 originally. 30GB memory for bs=8 per gpu...
+    num_out_ch: 3
+    num_grow_ch: 16
+
+  network_d:
+    num_in_ch: 3
+    num_feat: 32
+
+train:
+  exp_name: TrainESRGANDIV2KIntraQP37  # default: timestr. None: ~
+  random_seed: 7
+  num_iter: !!float 5e+5
+  interval_print: !!float 100
+  interval_val: !!float 5e+3  # also save model
+  pbar_len: 100
+
+  optim:
+    optim_g:
+      type: Adam
+      lr: !!float 1e-4  # init lr of scheduler
+      betas: [0.9, 0.999]
+      eps: !!float 1e-08
+
+    optim_d:
+      type: Adam
+      lr: !!float 1e-4
+      betas: [0.9, 0.999]
+      eps: !!float 1e-08
+
+  scheduler:
+    is_on: false
+    type: CosineAnnealingRestartLR
+    periods: [!!float 1e+5, !!float 1e+5, !!float 1e+5, !!float 1e+5]  # epoch interval
+    restart_weights: [1, 1, 1, 1]
+    eta_min: !!float 1e-7
+
+  loss:
+    perceptual:
+      type: PerceptualLoss
+      weight: 1.
+      setting:
+        vgg_type: vgg19
+        layer_weights:
+          'conv5_4': 1.
+        use_input_norm: True
+        perceptual_weight: 1.
+        style_weight: 0.
+    
+    pixel:
+      type: CharbonnierLoss
+      weight: !!float 1e-2
+      setting:
+        eps: !!float 1e-6
+
+    gan:
+      type: GANLoss
+      weight: !!float 5e-3
+      setting:
+        real_label_val: 1.
+        fake_label_val: 0.
+      
+  criterion:
+    type: LPIPS
+    unit: (lpips)
+    setting:
+      use_cuda: true
+      spatial: false
+
+val:
+  load_iter: 130000
+  pbar_len: 100
+
+  criterion:
+    type: LPIPS
+    unit: (lpips)
+    setting:
+      use_cuda: true
+      spatial: false
