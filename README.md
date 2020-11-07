@@ -1,6 +1,6 @@
-# ESRGAN for Compressed Video Subjective Quality Enhancement
+# Subjective Quality Enhancement of Compressed Images using ESRGAN
 
-- [ESRGAN for Compressed Video Subjective Quality Enhancement](#esrgan-for-compressed-video-subjective-quality-enhancement)
+- [Subjective Quality Enhancement of Compressed Images using ESRGAN](#subjective-quality-enhancement-of-compressed-images-using-esrgan)
   - [0. Background](#0-background)
   - [1. Pre-request](#1-pre-request)
     - [1.1. Environment](#11-environment)
@@ -13,7 +13,7 @@
 
 ## 0. Background
 
-PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compressed video subjective quality enhancement.
+PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
 
 **Note**: The network structure, dataset and training method are different from those in the original paper.
 
@@ -66,7 +66,7 @@ DIV2K/
 **Compress** these PNGs under HEVC all-intra (ai) mode:
 
 ```bash
-$ cd video_compression/
+$ cd compress_ai/
 $ chmod +x TAppEncoderStatic
 $ python convert_n_compress.py
 ```
@@ -91,7 +91,7 @@ DIV2K/
 **Note**:
 
 1. We crop PNG so that height (and also width) is a multiple of the minimum CU size (8). It's required by the HM16.5 codec.
-2. We first convert PNG to YCbCr YUV 444P, and convert back after compression. That's because HM16.5 require YUV as input.
+2. We first convert PNG to YCbCr YUV 444P, and convert back after compression. That's because HM16.5 requires YUV as input.
 
 Finally, we generate **LMDB** for training data. Edit `dataset/root` at `option_rrdbnet_div2k.yml`, and run:
 
@@ -206,12 +206,12 @@ You can **use, redistribute, and adapt** the material for **non-commercial purpo
   - A **simple** yet **effective** video quality enhancement network.
   - Adopt **feature alignment** by multi-frame **deformable convolutions**, instead of motion estimation and motion compensation.
 
-- [MFQEv2 (TPAMI 2019)](https://github.com/RyanXingQL/MFQEv2.0)
-  - The first **multi-frame** quality enhancement approach for compressed videos.
-  - The first to consider and utilize the **quality fluctuation** feature of compressed videos.
-  - Enhance low-quality frames using **neighboring high-quality** frames.
-
 - [RBQE (ECCV 2020)](https://github.com/RyanXingQL/RBQE)
   - A **single blind** enhancement model for HEVC/JPEG-compressed images with a **wide range** of Quantization Parameters (QPs) or Quality Factors (QFs).
   - A **multi-output dynamic** network with **early-exit** mechanism for easy input.
   - A **Tchebichef-moments** based **NR-IQA** approach for early-exit decision. This IQA approach is highly interpretable and sensitive to blocking energy detection.
+
+- [MFQEv2 (TPAMI 2019)](https://github.com/RyanXingQL/MFQEv2.0)
+  - The first **multi-frame** quality enhancement approach for compressed videos.
+  - The first to consider and utilize the **quality fluctuation** feature of compressed videos.
+  - Enhance low-quality frames using **neighboring high-quality** frames.
