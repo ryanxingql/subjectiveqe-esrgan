@@ -5,7 +5,7 @@
   - [1. Pre-request](#1-pre-request)
     - [1.1. Environment](#11-environment)
     - [1.2. DIV2K dataset](#12-div2k-dataset)
-  - [2. Pre-train Generator (RRDBNet)](#2-pre-train-generator-rrdbnet)
+  - [2. Pre-train generator (RRDBNet)](#2-pre-train-generator-rrdbnet)
   - [3. Train](#3-train)
   - [4. Test](#4-test)
   - [5. License & Citation](#5-license--citation)
@@ -111,7 +111,7 @@ SubjectiveQE-ESRGAN/
 └── ...
 ```
 
-## 2. Pre-train Generator (RRDBNet)
+## 2. Pre-train generator (RRDBNet)
 
 ```bash
 # single-gpu
