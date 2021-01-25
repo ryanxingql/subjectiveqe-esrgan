@@ -17,9 +17,9 @@ PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compre
 
 **Note**: The network structure, dataset and training method are different from those in the original paper.
 
-![demo](demo_1.png)
+![demo](https://user-images.githubusercontent.com/34084019/105740844-8d83c400-5f74-11eb-9e95-8c0263e32d96.png))
 
-![demo](demo_2.png)
+![demo](https://user-images.githubusercontent.com/34084019/105740851-91afe180-5f74-11eb-958a-1378adf8003b.png)
 
 Feel free to contact: ryanxingql@gmail.com.
 
@@ -35,12 +35,12 @@ Feel free to contact: ryanxingql@gmail.com.
 Suppose that you have installed CUDA 10.1, then:
 
 ```bash
-$ git clone --depth=1 https://github.com/RyanXingQL/SubjectiveQE-ESRGAN
-$ cd SubjectiveQE-ESRGAN/
-$ conda create -n esrgan python=3.7 -y
-$ conda activate esrgan
-$ python -m pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
-$ python -m pip install tqdm lmdb pyyaml opencv-python scikit-image tensorboard lpips
+git clone --depth=1 https://github.com/RyanXingQL/SubjectiveQE-ESRGAN
+cd SubjectiveQE-ESRGAN/
+conda create -n esrgan python=3.7 -y
+conda activate esrgan
+python -m pip install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+python -m pip install tqdm lmdb pyyaml opencv-python scikit-image tensorboard lpips
 ```
 
 ### 1.2. DIV2K dataset
@@ -66,9 +66,9 @@ DIV2K/
 **Compress** these PNGs under HEVC all-intra (ai) mode:
 
 ```bash
-$ cd compress_ai/
-$ chmod +x TAppEncoderStatic
-$ python convert_n_compress.py
+cd compress_ai/
+chmod +x TAppEncoderStatic
+python convert_n_compress.py
 ```
 
 We will get:
@@ -96,7 +96,7 @@ DIV2K/
 Finally, we generate **LMDB** for training data. Edit `dataset/root` at `option_rrdbnet_div2k.yml`, and run:
 
 ```bash
-$ python create_lmdb_div2k.py --opt_path option_rrdbnet_div2k.yml
+python create_lmdb_div2k.py --opt_path option_rrdbnet_div2k.yml
 ```
 
 We can then access DIV2K dataset at our repository root.
@@ -125,10 +125,10 @@ $ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2
 Visualize:
 
 ```bash
-$ tensorboard --logdir=exp/TrainRRDBNetDIV2KIntraQP37 --port=7777
+tensorboard --logdir=exp/TrainRRDBNetDIV2KIntraQP37 --port=7777
 ```
 
-![vis](vis_rrdbnet_train.png)
+![vis](https://user-images.githubusercontent.com/34084019/105740895-9c6a7680-5f74-11eb-833d-a249d9fbfaad.png)
 
 **Note**:
 
@@ -147,17 +147,18 @@ $ CUDA_VISIBLE_DEVICES=0 python train_esrgan.py --opt_path option_esrgan_div2k.y
 # change num_worker_per_gpu and batch_size_per_gpu at YAML!
 $ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=22222 train_esrgan.py --opt_path option_esrgan_div2k.yml
 ```
+
 Visualize:
 
 ```bash
-$ tensorboard --logdir=exp/TrainESRGANDIV2KIntraQP37 --port=7777
+tensorboard --logdir=exp/TrainESRGANDIV2KIntraQP37 --port=7777
 ```
 
-![vis](vis_esrgan_train_curve.png)
+![vis](https://user-images.githubusercontent.com/34084019/105740877-97a5c280-5f74-11eb-92a7-23ed142b6494.png)
 
 According to the validation curve, we select the model at iteration 130k.
 
-![vis](vis_esrgan_train_im.png)
+![vis](https://user-images.githubusercontent.com/34084019/105740887-9a081c80-5f74-11eb-9d08-e9287349ed41.png)
 
 Enhanced patches seem much better than the input compressed patches.
 
