@@ -45,8 +45,12 @@ python -m pip install tqdm lmdb pyyaml opencv-python scikit-image tensorboard lp
 
 ### 1.2. DIV2K dataset
 
+<details>
+
+<summary><b>Download dataset</b></summary>
+
 **Download** the [DIV2K_train_HR.zip](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip), [DIV2K_valid_HR.zip](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_valid_HR.zip) and compression toolbox at
- [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) (For Chinese researchers: [[百度网盘]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA), 提取码sgan).
+ [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) [[百度网盘 (sgan)]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA).
 
 **Unzip** and **put** folders as:
 
@@ -62,6 +66,12 @@ DIV2K/
     ├── ...
     └── 0900.png
 ```
+
+</details>
+
+<details>
+
+<summary><b>Compress images</b></summary>
 
 **Compress** these PNGs under HEVC all-intra (ai) mode:
 
@@ -93,6 +103,12 @@ DIV2K/
 1. We crop PNG so that height (and also width) is a multiple of the minimum CU size (8). It's required by the HM16.5 codec.
 2. We first convert PNG to YCbCr YUV 444P, and convert back after compression. That's because HM16.5 requires YUV as input.
 
+</details>
+
+<details>
+
+<summary><b>Generate LMDB</b></summary>
+
 Finally, we generate **LMDB** for training data. Edit `dataset/root` at `option_rrdbnet_div2k.yml`, and run:
 
 ```bash
@@ -111,6 +127,8 @@ SubjectiveQE-ESRGAN/
 └── ...
 ```
 
+</details>
+
 ## 2. Pre-train generator (RRDBNet)
 
 ```bash
@@ -122,13 +140,17 @@ $ CUDA_VISIBLE_DEVICES=0 python train_rrdbnet.py --opt_path option_rrdbnet_div2k
 $ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=22222 train_rrdbnet.py --opt_path option_rrdbnet_div2k.yml
 ```
 
-Visualize:
+<details>
+
+<summary><b>Visualization</b></summary>
 
 ```bash
 tensorboard --logdir=exp/TrainRRDBNetDIV2KIntraQP37 --port=7777
 ```
 
 ![vis](https://user-images.githubusercontent.com/34084019/105740895-9c6a7680-5f74-11eb-833d-a249d9fbfaad.png)
+
+</details>
 
 **Note**:
 
@@ -148,7 +170,9 @@ $ CUDA_VISIBLE_DEVICES=0 python train_esrgan.py --opt_path option_esrgan_div2k.y
 $ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 --master_port=22222 train_esrgan.py --opt_path option_esrgan_div2k.yml
 ```
 
-Visualize:
+<details>
+
+<summary><b>Visualization</b></summary>
 
 ```bash
 tensorboard --logdir=exp/TrainESRGANDIV2KIntraQP37 --port=7777
@@ -161,6 +185,8 @@ According to the validation curve, we select the model at iteration 130k.
 ![vis](https://user-images.githubusercontent.com/34084019/105740887-9a081c80-5f74-11eb-9d08-e9287349ed41.png)
 
 Enhanced patches seem much better than the input compressed patches.
+
+</details>
 
 Results are logged at `exp/TrainESRGANDIV2KIntraQP37/log.log`.
 
