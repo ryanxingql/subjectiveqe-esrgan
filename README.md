@@ -13,11 +13,11 @@
 
 ## 0. Background
 
-PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
+PyTorch implementation of [[ESRGAN]](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
 
 **Note**: The network structure, dataset and training method are different from those in the original paper.
 
-![demo](https://user-images.githubusercontent.com/34084019/105740844-8d83c400-5f74-11eb-9e95-8c0263e32d96.png))
+![demo](https://user-images.githubusercontent.com/34084019/105740844-8d83c400-5f74-11eb-9e95-8c0263e32d96.png)
 
 ![demo](https://user-images.githubusercontent.com/34084019/105740851-91afe180-5f74-11eb-958a-1378adf8003b.png)
 
@@ -49,7 +49,7 @@ python -m pip install tqdm lmdb pyyaml opencv-python scikit-image tensorboard lp
 
 <summary><b>Download dataset</b></summary>
 
-**Download** the [DIV2K_train_HR.zip](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip), [DIV2K_valid_HR.zip](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_valid_HR.zip) and compression toolbox at
+**Download** the [[DIV2K_train_HR.zip]](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip), [[DIV2K_valid_HR.zip]](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_valid_HR.zip) and compression toolbox at
  [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) [[百度网盘 (sgan)]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA).
 
 **Unzip** and **put** folders as:
@@ -195,7 +195,7 @@ Results are logged at `exp/TrainESRGANDIV2KIntraQP37/log.log`.
 - For the original settings at YAML and single-gpu training, ~21424 MiB GPU memory is needed. You can change `batch_size_per_gpu` and network settings at YAML.
 - `dataset/num_worker_per_gpu` * [your assigned gpu number] should better be smaller than your cpu core number. For example, we have 40 cpu cores in total and use two gpus, then we should better let `dataset/num_worker_per_gpu` < [40/2=20], e.g., 16.
 
-We have prepared trained models at [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) (For Chinese researchers: [[百度网盘]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA), 提取码sgan).
+We have prepared trained models at [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) [[百度网盘 (sgan)]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA).
 
 We place `events.out.tfevents` at [百度网盘]. It may be too large to download (1.4GB).
 
@@ -229,16 +229,16 @@ You can **use, redistribute, and adapt** the material for **non-commercial purpo
 
 ## 6. See more
 
-- [PyTorch implementation of STDF (AAAI 2020)](https://github.com/RyanXingQL/STDF-PyTorch)
+- [[PyTorch implementation of STDF (AAAI 2020)]](https://github.com/RyanXingQL/STDF-PyTorch)
   - A **simple** yet **effective** video quality enhancement network.
   - Adopt **feature alignment** by multi-frame **deformable convolutions**, instead of motion estimation and motion compensation.
 
-- [RBQE (ECCV 2020)](https://github.com/RyanXingQL/RBQE)
+- [[RBQE (ECCV 2020)]](https://github.com/RyanXingQL/RBQE)
   - A **single blind** enhancement model for HEVC/JPEG-compressed images with a **wide range** of Quantization Parameters (QPs) or Quality Factors (QFs).
   - A **multi-output dynamic** network with **early-exit** mechanism for easy input.
   - A **Tchebichef-moments** based **NR-IQA** approach for early-exit decision. This IQA approach is highly interpretable and sensitive to blocking energy detection.
 
-- [MFQEv2 (TPAMI 2019)](https://github.com/RyanXingQL/MFQEv2.0)
+- [[MFQEv2 (TPAMI 2019)]](https://github.com/RyanXingQL/MFQEv2.0)
   - The first **multi-frame** quality enhancement approach for compressed videos.
   - The first to consider and utilize the **quality fluctuation** feature of compressed videos.
   - Enhance low-quality frames using **neighboring high-quality** frames.
