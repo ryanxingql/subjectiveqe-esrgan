@@ -13,7 +13,7 @@
 
 ## 0. Background
 
-PyTorch implementation of [[ESRGAN]](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
+PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
 
 **Note**: The network structure, dataset and training method are different from those in the original paper.
 
@@ -21,16 +21,16 @@ PyTorch implementation of [[ESRGAN]](https://github.com/xinntao/ESRGAN) for comp
 
 ![demo](https://user-images.githubusercontent.com/34084019/105740851-91afe180-5f74-11eb-958a-1378adf8003b.png)
 
-Feel free to contact: ryanxingql@gmail.com.
+Feel free to contact: <ryanxingql@gmail.com>.
 
 ## 1. Pre-request
 
 ### 1.1. Environment
 
-- Ubuntu 20.04 LTS
+- UBUNTU 20.04 LTS
 - CUDA 10.1
-- PyTorch 1.6
-- Packages: tqdm, lmdb, pyyaml, opencv-python, scikit-image, tensorboardx, lpips
+- PYTORCH 1.6
+- packages: TQDM, LMDB, PYYAML, OPENCV-PYTHON, SCIKIT-IMAGE, TENSORBOARDX, LPIPS
 
 Suppose that you have installed CUDA 10.1, then:
 
@@ -46,8 +46,8 @@ python -m pip install tqdm lmdb pyyaml opencv-python scikit-image tensorboard lp
 ### 1.2. DIV2K dataset
 
 <details>
-
 <summary><b>Download dataset</b></summary>
+<p>
 
 **Download** the [[DIV2K_train_HR.zip]](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_train_HR.zip), [[DIV2K_valid_HR.zip]](http://data.vision.ee.ethz.ch/cvl/DIV2K/DIV2K_valid_HR.zip) and compression toolbox at
  [[Google Drive]](https://drive.google.com/drive/folders/1f2iaOEk-RPCQnEIUbughWH91PrB5I4fc?usp=sharing) [[百度网盘 (sgan)]](https://pan.baidu.com/s/1GQheI6c9lNVvz-437eAZKA).
@@ -67,11 +67,12 @@ DIV2K/
     └── 0900.png
 ```
 
+</p>
 </details>
 
 <details>
-
 <summary><b>Compress images</b></summary>
+<p>
 
 **Compress** these PNGs under HEVC all-intra (ai) mode:
 
@@ -103,11 +104,12 @@ DIV2K/
 1. We crop PNG so that height (and also width) is a multiple of the minimum CU size (8). It's required by the HM16.5 codec.
 2. We first convert PNG to YCbCr YUV 444P, and convert back after compression. That's because HM16.5 requires YUV as input.
 
+</p>
 </details>
 
 <details>
-
 <summary><b>Generate LMDB</b></summary>
+<p>
 
 Finally, we generate **LMDB** for training data. Edit `dataset/root` at `option_rrdbnet_div2k.yml`, and run:
 
@@ -127,6 +129,7 @@ SubjectiveQE-ESRGAN/
 └── ...
 ```
 
+</p>
 </details>
 
 ## 2. Pre-train generator (RRDBNet)
@@ -141,7 +144,6 @@ $ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2
 ```
 
 <details>
-
 <summary><b>Visualization</b></summary>
 
 ```bash
@@ -150,6 +152,7 @@ tensorboard --logdir=exp/TrainRRDBNetDIV2KIntraQP37 --port=7777
 
 ![vis](https://user-images.githubusercontent.com/34084019/105740895-9c6a7680-5f74-11eb-833d-a249d9fbfaad.png)
 
+</p>
 </details>
 
 **Note**:
@@ -171,8 +174,8 @@ $ CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2
 ```
 
 <details>
-
 <summary><b>Visualization</b></summary>
+<p>
 
 ```bash
 tensorboard --logdir=exp/TrainESRGANDIV2KIntraQP37 --port=7777
@@ -186,6 +189,7 @@ According to the validation curve, we select the model at iteration 130k.
 
 Enhanced patches seem much better than the input compressed patches.
 
+</p>
 </details>
 
 Results are logged at `exp/TrainESRGANDIV2KIntraQP37/log.log`.
@@ -229,16 +233,16 @@ You can **use, redistribute, and adapt** the material for **non-commercial purpo
 
 ## 6. See more
 
-- [[PyTorch implementation of STDF (AAAI 2020)]](https://github.com/RyanXingQL/STDF-PyTorch)
-  - A **simple** yet **effective** video quality enhancement network.
+- [PyTorch implementation of STDF (AAAI 2020)](https://github.com/RyanXingQL/STDF-PyTorch)
+  - A **simple** and **effective** video quality enhancement network.
   - Adopt **feature alignment** by multi-frame **deformable convolutions**, instead of motion estimation and motion compensation.
 
-- [[RBQE (ECCV 2020)]](https://github.com/RyanXingQL/RBQE)
+- [RBQE (ECCV 2020)](https://github.com/RyanXingQL/RBQE)
   - A **single blind** enhancement model for HEVC/JPEG-compressed images with a **wide range** of Quantization Parameters (QPs) or Quality Factors (QFs).
   - A **multi-output dynamic** network with **early-exit** mechanism for easy input.
   - A **Tchebichef-moments** based **NR-IQA** approach for early-exit decision. This IQA approach is highly interpretable and sensitive to blocking energy detection.
 
-- [[MFQEv2 (TPAMI 2019)]](https://github.com/RyanXingQL/MFQEv2.0)
+- [MFQEv2 (TPAMI 2019)](https://github.com/RyanXingQL/MFQEv2.0)
   - The first **multi-frame** quality enhancement approach for compressed videos.
   - The first to consider and utilize the **quality fluctuation** feature of compressed videos.
   - Enhance low-quality frames using **neighboring high-quality** frames.
