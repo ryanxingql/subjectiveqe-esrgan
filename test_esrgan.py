@@ -126,7 +126,7 @@ def main():
     per_aver = utils.Counter()
     val_num = len(val_ds)
     pbar = tqdm(total=val_num, ncols=opts_dict['val']['pbar_len'])
-    unit = opts_dict['train']['criterion']['unit']
+    unit = opts_dict['val']['criterion']['unit']
 
     with torch.no_grad():
         # fetch the first batch
