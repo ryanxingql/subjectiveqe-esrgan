@@ -231,6 +231,18 @@ You can **use, redistribute, and adapt** the material for **non-commercial purpo
 }
 ```
 
+If you find this repository helpful, you may cite:
+
+```tex
+@misc{ESRGAN_xing_2020,
+  author = {Qunliang Xing},
+  title = {Subjective Quality Enhancement of Compressed Images using ESRGAN},
+  howpublished = "\url{https://github.com/RyanXingQL/SubjectiveQE-ESRGAN}",
+  year = {2020}, 
+  note = "[Online; accessed 11-April-2021]"
+}
+```
+
 ## 6. See more
 
 - [PyTorch implementation of STDF (AAAI 2020)](https://github.com/RyanXingQL/STDF-PyTorch)
