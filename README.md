@@ -11,6 +11,8 @@
   - [5. License & Citation](#5-license--citation)
   - [6. See more](#6-see-more)
 
+**Update** (21/4/27): We open-source the improved ESRGAN and compared approaches at [PowerQE](https://github.com/RyanXingQL/PowerQE).
+
 ## 0. Background
 
 PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
