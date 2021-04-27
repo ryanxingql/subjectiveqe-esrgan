@@ -9,9 +9,8 @@
   - [3. Train](#3-train)
   - [4. Test](#4-test)
   - [5. License & Citation](#5-license--citation)
-  - [6. See more](#6-see-more)
 
-**Update** (21/4/27): We open-source the improved ESRGAN and compared approaches at [PowerQE](https://github.com/RyanXingQL/PowerQE).
+:rocket: **Update** (21/4/27): We open-source the improved ESRGAN and some commonly-used compared approaches at [PowerQE](https://github.com/RyanXingQL/PowerQE).
 
 ## 0. Background
 
@@ -244,19 +243,3 @@ If you find this repository helpful, you may cite:
   note = "[Online; accessed 11-April-2021]"
 }
 ```
-
-## 6. See more
-
-- [PyTorch implementation of STDF (AAAI 2020)](https://github.com/RyanXingQL/STDF-PyTorch)
-  - A **simple** and **effective** video quality enhancement network.
-  - Adopt **feature alignment** by multi-frame **deformable convolutions**, instead of motion estimation and motion compensation.
-
-- [RBQE (ECCV 2020)](https://github.com/RyanXingQL/RBQE)
-  - A **single blind** enhancement model for HEVC/JPEG-compressed images with a **wide range** of Quantization Parameters (QPs) or Quality Factors (QFs).
-  - A **multi-output dynamic** network with **early-exit** mechanism for easy input.
-  - A **Tchebichef-moments** based **NR-IQA** approach for early-exit decision. This IQA approach is highly interpretable and sensitive to blocking energy detection.
-
-- [MFQEv2 (TPAMI 2019)](https://github.com/RyanXingQL/MFQEv2.0)
-  - The first **multi-frame** quality enhancement approach for compressed videos.
-  - The first to consider and utilize the **quality fluctuation** feature of compressed videos.
-  - Enhance low-quality frames using **neighboring high-quality** frames.
