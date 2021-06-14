@@ -1,10 +1,5 @@
 # Subjective Quality Enhancement of Compressed Images using ESRGAN
 
-- [Subjective Quality Enhancement of Compressed Images using ESRGAN](#subjective-quality-enhancement-of-compressed-images-using-esrgan)
-  - [0. Background](#0-background)
-  - [1. Codes & Pre-trained Models](#1-codes--pre-trained-models)
-  - [2. License & Citation](#2-license--citation)
-
 ## 0. Background
 
 PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compressed image subjective quality enhancement.
