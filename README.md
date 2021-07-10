@@ -16,9 +16,11 @@ Feel free to contact: `ryanxingql@gmail.com`.
 
 To unify most of the quality enhancement approaches, we have released the improved ESRGAN at [PowerQE](https://github.com/RyanXingQL/PowerQE).
 
-## 2. License & Citation
+## 2. License
 
-You can **use, redistribute, and adapt** the material for **non-commercial purposes**, as long as you give appropriate credit by **citing the following paper** and **indicating any changes** that you've made.
+We adopt Apache License v2.0. For other licenses, please refer to [ESRGAN](https://github.com/xinntao/ESRGAN/blob/master/LICENSE).
+
+If you find this repository helpful, you may cite:
 
 ```tex
 @incollection{Wang_2019,
@@ -31,11 +33,7 @@ You can **use, redistribute, and adapt** the material for **non-commercial purpo
 	title = {{ESRGAN}: Enhanced Super-Resolution Generative Adversarial Networks},
 	booktitle = {Lecture Notes in Computer Science}
 }
-```
 
-If you find this repository helpful, you may cite:
-
-```tex
 @misc{ESRGAN_xing_2020,
   author = {Qunliang Xing},
   title = {Subjective Quality Enhancement of Compressed Images using ESRGAN},
