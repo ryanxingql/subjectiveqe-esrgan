@@ -12,7 +12,7 @@ Feel free to contact: `ryanxingql@gmail.com`.
 
 ## 1. Code & Pre-trained Model
 
-[[Previous Version]](https://github.com/RyanXingQL/SubjectiveQE-ESRGAN/tree/bd3bd25abeb78782c440dc4c42ac65dae668b4cc)
+[[Previous Formal Version]](https://github.com/RyanXingQL/SubjectiveQE-ESRGAN/tree/bd3bd25abeb78782c440dc4c42ac65dae668b4cc)
 
 To unify most of the quality enhancement approaches, we have released the improved ESRGAN at [PowerQE](https://github.com/RyanXingQL/PowerQE).
 
