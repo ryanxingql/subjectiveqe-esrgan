@@ -10,7 +10,7 @@ PyTorch implementation of [ESRGAN](https://github.com/xinntao/ESRGAN) for compre
 
 Feel free to contact: `ryanxingql@gmail.com`.
 
-## 1. Codes & Pre-trained Models
+## 1. Code & Pre-trained Model
 
 [[Previous Version]](https://github.com/RyanXingQL/SubjectiveQE-ESRGAN/tree/bd3bd25abeb78782c440dc4c42ac65dae668b4cc)
 
