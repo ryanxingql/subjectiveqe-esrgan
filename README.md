@@ -12,9 +12,9 @@ Feel free to contact: `ryanxingql@gmail.com`.
 
 ## 1. Code & Pre-trained Model
 
-[[Previous Formal Version]](https://github.com/RyanXingQL/SubjectiveQE-ESRGAN/tree/bd3bd25abeb78782c440dc4c42ac65dae668b4cc)
+[[Previous Formal Version]](https://github.com/ryanxingql/subjectiveqe-esrgan/tree/bd3bd25abeb78782c440dc4c42ac65dae668b4cc)
 
-To unify most of the quality enhancement approaches, we have released the improved ESRGAN at [PowerQE](https://github.com/RyanXingQL/PowerQE).
+To unify most of the quality enhancement approaches, we have released the improved ESRGAN at [PowerQE](https://github.com/ryanxingql/powerqe).
 
 ## 2. License
 
@@ -37,7 +37,7 @@ If you find this repository helpful, you may cite:
 @misc{ESRGAN_xing_2020,
   author = {Qunliang Xing},
   title = {Subjective Quality Enhancement of Compressed Images using ESRGAN},
-  howpublished = "\url{https://github.com/RyanXingQL/SubjectiveQE-ESRGAN}",
+  howpublished = "\url{https://github.com/ryanxingql/subjectiveqe-esrgan}",
   year = {2020}, 
   note = "[Online; accessed 11-April-2021]"
 }
